@@ -1,0 +1,4 @@
+[package]
+name = "currencyReport"
+version = "0.0.1"
+authors = ["jeanepaul <jeanepaul@gmail.com>"]

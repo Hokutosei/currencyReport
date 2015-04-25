@@ -1,15 +1,21 @@
 use utils::utils;
+use std::sync::mpsc::{Sender};
 use std::{thread};
 
-pub fn test() {
+pub fn test(c: &Sender<&str>) {
     println!("called!")
 }
 
-pub fn start_getting_currency(loop_delay: u32, x: &mut u32) {
+fn http_get() {
+    
+}
+
+pub fn start_getting_currency(loop_delay: u32, x: &mut u32, c: &Sender<&str>) {
     loop {
-        println!("init!");
         utils::counter(x);
         println!("{}", x);
         thread::sleep_ms(loop_delay);
+
+        c.send("test");
     }
 }

@@ -1,16 +1,19 @@
 extern crate currencyReport;
 
 use std::{io, thread};
+use std::sync::mpsc::{channel, Sender, Receiver};
 use currencyReport::http_get::http_getter;
 
 
 fn main() {
     let mut x = 0;
-    thread::spawn(move || http_getter::start_getting_currency(2000, &mut x));
+    let (tx, rx) = channel();
 
-    thread::spawn(move || http_getter::start_getting_currency(4000, &mut x));
+    thread::spawn(move || http_getter::start_getting_currency(2000, &mut x, &tx));
 
-    http_getter::test();
+    loop {
+        println!("print from receive {}", rx.recv().unwrap());
+    }
 
     let mut stdin = io::stdin();
     let input = &mut String::new();

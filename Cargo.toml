@@ -3,5 +3,5 @@ name = "currencyReport"
 version = "0.0.1"
 authors = ["jeanepaul <jeanepaul@gmail.com>"]
 
-[dependencies.hyper]
-git = "https://github.com/hyperium/hyper"
+[dependencies]
+hyper = "0.5.0"
